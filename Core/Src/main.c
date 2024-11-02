@@ -18,33 +18,22 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "fatfs.h"
-#include "stdarg.h"
 #include <stdio.h>
+#include "sd_card_lib.h"
+#include "custom_printf_lib.h"
 
 SPI_HandleTypeDef hspi1;
-
 UART_HandleTypeDef huart1;
 
-/* USER CODE BEGIN PV */
-
+void Callback_Printf_Function(const uint8_t *buf, uint16_t len, uint32_t timeout){
+   HAL_UART_Transmit(&huart1, buf, len, timeout);
+}
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_SPI1_Init(void);
 static void MX_USART1_UART_Init(void);
-void Custom_Printf(const char *charptr, ...){
-
-  static char buf[256] = {[0 ...255] = '\0'};
-  uint8_t len = 0;
-  va_list args;
-  va_start(args, charptr);
-  vsnprintf(buf, sizeof(buf), charptr, args);
-  va_end(args);
-  len = strlen(buf);
-
-}
 
 /**
   * @brief  The application entry point.
@@ -53,8 +42,6 @@ void Custom_Printf(const char *charptr, ...){
 int main(void)
 {
 
-
-
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
@@ -62,26 +49,23 @@ int main(void)
   /* Configure the system clock */
   SystemClock_Config();
 
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_SPI1_Init();
   MX_FATFS_Init();
   MX_USART1_UART_Init();
-  /* USER CODE BEGIN 2 */
 
-  /* USER CODE END 2 */
+
+
+  //Open the file system
+
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }

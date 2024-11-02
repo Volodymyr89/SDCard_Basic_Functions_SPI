@@ -43,6 +43,8 @@ Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rcc.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_utils.c \
 Core/Src/system_stm32f1xx.c \
 Core/Src/sysmem.c \
+Core/Src/sd_card_lib.c\
+Core/Src/custom_printf_lib.c\
 Core/Src/syscalls.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_gpio.c \
 Core/Src/stm32f1xx_hal_msp.c \
@@ -67,6 +69,7 @@ Middlewares/Third_Party/FatFs/src/ff.c \
 Middlewares/Third_Party/FatFs/src/ff_gen_drv.c \
 Middlewares/Third_Party/FatFs/src/option/syscall.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c
+
 
 # ASM sources
 ASM_SOURCES =  \
