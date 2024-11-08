@@ -56,6 +56,7 @@ int main(void)
   MX_FATFS_Init();
   MX_USART1_UART_Init();
 
+  ReadSDCard();
 
 
   //Open the file system
