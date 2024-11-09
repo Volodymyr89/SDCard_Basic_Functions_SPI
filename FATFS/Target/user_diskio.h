@@ -27,12 +27,10 @@
 #endif
 
 /* USER CODE BEGIN 0 */
-
-/* Includes ------------------------------------------------------------------*/
-/* Exported types ------------------------------------------------------------*/
-/* Exported constants --------------------------------------------------------*/
-/* Exported functions ------------------------------------------------------- */
+#define SPI hspi1
+extern SPI_HandleTypeDef SPI_1;
 extern Diskio_drvTypeDef  USER_Driver;
+void sdcard_systick_timerproc(void);
 
 /* USER CODE END 0 */
 

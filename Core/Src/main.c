@@ -21,6 +21,7 @@
 #include <stdio.h>
 #include "sd_card_lib.h"
 #include "custom_printf_lib.h"
+#include "fatfs.h"
 
 SPI_HandleTypeDef hspi1;
 UART_HandleTypeDef huart1;
@@ -44,8 +45,6 @@ int main(void)
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
-
-
   /* Configure the system clock */
   SystemClock_Config();
 
@@ -55,11 +54,7 @@ int main(void)
   MX_SPI1_Init();
   MX_FATFS_Init();
   MX_USART1_UART_Init();
-
   ReadSDCard();
-
-
-  //Open the file system
 
 
   /* Infinite loop */
@@ -138,7 +133,7 @@ static void MX_SPI1_Init(void)
   hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
   hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
   hspi1.Init.NSS = SPI_NSS_SOFT;
-  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_4;
   hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
   hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
   hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
